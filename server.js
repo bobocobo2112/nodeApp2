@@ -2,12 +2,13 @@
  * Created by 1205765 on 23/11/2015.
  */
 
-var http = require('http')
-var port = process.env.PORT || 1337;
-response.write('Connecting \n');
-var server = http.createServer(function(request, response) {
-    response.writeHead(200, {"Content-Type": "text/html"});
+var http = require ('http')
+var port = process.evn.PORT || 1337;
 
+http.createServer(function(request, response) {
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.write('Connecting \n');
+    // Use connect method to connect to the Server
     MongoClient.connect(url, function (err, db) {
         response.write('Connection Made \n');
         if (err) {
@@ -26,6 +27,4 @@ var server = http.createServer(function(request, response) {
         response.end('Finished, Connection closed \n');
     });
 
-});
-server.listen(port);
-console.log("Server is listening");
+}).listen(port);
